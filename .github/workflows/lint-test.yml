@@ -9,6 +9,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8 # ※プロジェクトで使っているpnpmのバージョンに合わせてください
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -16,10 +21,6 @@ jobs:
           cache: 'pnpm'
 
       # ✅ pnpm をセットアップするステップ
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8 # ※プロジェクトで使っているpnpmのバージョンに合わせてください
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
